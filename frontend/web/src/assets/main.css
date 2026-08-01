@@ -1,0 +1,164 @@
+/* ===== 全局重置 ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 科技淡色系 - 减少复古感 */
+  --bg: #f4f5f7;
+  --bg-card: #ffffff;
+  --bg-soft: #e8eaed;
+  --fg: #1e1e2e;
+  --fg-dim: #6c6f80;
+  --fg-mute: #a8abb5;
+  --border: #d4d6dc;
+  --border-strong: #888c96;
+
+  /* 科技色 */
+  --c-orange: #e89537;
+  --c-orange-d: #c47a1e;
+  --c-orange-l: #f5b870;
+  --c-green: #5faa72;
+  --c-green-d: #3d8a52;
+  --c-blue: #5a8fc4;
+  --c-blue-d: #3a6fa4;
+  --c-blue-l: #8ab5d8;
+
+  /* 卡牌类型 */
+  --c-substance: #5a8fc4;
+  --c-condition: #e89537;
+  --c-privilege: #8a7ab0;
+
+  --radius: 3px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  font-size: 15px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+               'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 13px;
+  border: 1.5px solid var(--fg);
+  background: var(--bg-card);
+  color: var(--fg);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.1s;
+  touch-action: manipulation;
+  /* 科技阴影：向右下偏移 */
+  box-shadow: 2px 2px 0 var(--fg);
+  position: relative;
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--fg);
+}
+.btn:disabled {
+  opacity: 0.35;
+  box-shadow: 2px 2px 0 var(--fg-mute);
+}
+
+.btn-green {
+  background: var(--c-green);
+  color: #fff;
+  border-color: var(--c-green-d);
+  box-shadow: 2px 2px 0 var(--c-green-d);
+}
+.btn-green:active { box-shadow: 0 0 0 var(--c-green-d); }
+
+.btn-blue {
+  background: var(--c-blue);
+  color: #fff;
+  border-color: var(--c-blue-d);
+  box-shadow: 2px 2px 0 var(--c-blue-d);
+}
+.btn-blue:active { box-shadow: 0 0 0 var(--c-blue-d); }
+
+.btn-orange {
+  background: var(--c-orange);
+  color: #fff;
+  border-color: var(--c-orange-d);
+  box-shadow: 2px 2px 0 var(--c-orange-d);
+}
+.btn-orange:active { box-shadow: 0 0 0 var(--c-orange-d); }
+
+.btn-ghost {
+  background: transparent;
+  box-shadow: 2px 2px 0 var(--border-strong);
+}
+.btn-ghost:active { box-shadow: 0 0 0 var(--border-strong); }
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 11px;
+  box-shadow: 1.5px 1.5px 0 var(--fg);
+}
+.btn-sm:active { transform: translate(1.5px, 1.5px); box-shadow: 0 0 0; }
+
+/* 返回按钮 */
+.btn-back {
+  position: fixed;
+  top: calc(8px + var(--safe-top));
+  left: 8px;
+  z-index: 100;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* ===== 输入框 ===== */
+.input {
+  padding: 8px 12px;
+  border: 1.5px solid var(--fg);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--bg-card);
+  color: var(--fg);
+  width: 100%;
+  box-shadow: 2px 2px 0 var(--fg);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--c-blue);
+  box-shadow: 2px 2px 0 var(--c-blue-d);
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.4; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.fade-enter-active, .fade-leave-active { transition: opacity 0.15s; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
